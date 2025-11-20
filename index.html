@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menú Taquería Maestra</title>
+    <title>Menú Taquería La Mestra</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
@@ -42,35 +42,35 @@
             background: white;
             padding: 30px 20px;
             border-radius: 12px;
-            margin-top: 30px;
+            margin-top: 40px; /* Aumentada la separación del header */
             box-shadow: 0 8px 20px var(--color-sombra);
             border: 3px solid var(--color-secundario); /* Borde decorativo */
         }
         
         .categoria {
-            margin-bottom: 25px;
+            margin-bottom: 40px; /* Aumentada la separación entre categorías */
         }
         
         .categoria-titulo {
             font-size: 28px;
             color: var(--color-secundario);
-            margin-top: 20px;
-            margin-bottom: 15px;
+            margin-top: 0;
+            margin-bottom: 20px; /* Separación después del título */
             font-weight: bold;
             font-family: var(--font-titulo);
             letter-spacing: 1px;
             text-transform: uppercase;
-            border-bottom: 2px solid var(--color-secundario);
-            padding-bottom: 5px;
+            border-bottom: 3px solid var(--color-secundario); /* Borde más grueso */
+            padding-bottom: 8px;
         }
         
         .item {
-            display: flex; /* Usar flexbox para alinear nombre y precio */
-            justify-content: space-between; /* Espaciar el contenido */
+            display: flex;
+            justify-content: space-between;
             align-items: center;
             text-align: left;
-            padding: 12px 0;
-            border-bottom: 1px dotted #ccc; /* Separador más sutil */
+            padding: 15px 0; /* Aumentada la separación vertical de los ítems */
+            border-bottom: 1px dashed #ccc; /* Separador de línea más visible */
         }
         
         .item:last-child {
@@ -78,28 +78,34 @@
         }
         
         .nombre-item {
-            font-size: 18px;
+            font-size: 19px; /* Tamaño ligeramente más grande */
             color: #333;
-            font-weight: 500;
+            font-weight: 700;
         }
         
         .descripcion-item {
-            font-size: 14px;
+            font-size: 15px;
             color: #777;
             display: block;
-            margin-top: 2px;
+            margin-top: 4px;
         }
         
         .precio {
-            font-size: 20px;
+            font-size: 22px; /* Tamaño de precio más grande */
             font-weight: bold;
             color: var(--color-precio);
-            min-width: 60px; /* Asegura un ancho mínimo para alineación */
+            min-width: 70px;
             text-align: right;
         }
         
+        .opciones-masa {
+            font-style: italic;
+            color: #555; /* Color más oscuro para mejor lectura */
+            font-weight: normal;
+        }
+        
         #qr-box {
-            margin-top: 40px;
+            margin-top: 50px; /* Aumentada la separación del menú */
             padding: 20px;
         }
 
@@ -116,28 +122,29 @@
             border-radius: 8px;
             box-shadow: 0 4px 10px var(--color-sombra);
         }
-
-        /* Estilos para el texto de la descripción de los tacos */
-        .opciones-masa {
-            font-style: italic;
-            color: #777;
-            font-weight: normal;
-        }
-
-        /* Utilidad para limpiar floats si fuera necesario (aunque con flexbox no es necesario) */
-        .clearfix::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
     </style>
 </head>
 
 <body>
 
-<header>🌮 Taquería Maestra 🌶️</header>
+<header>🌮 Taquería La Mestra 🌶️</header>
 
 <div class="menu-container">
+    
+    <div class="categoria">
+        <div class="categoria-titulo">Tacos de Guisado o Normales</div>
+        <div class="item">
+            <span class="nombre-item">Taco de Guisado de la Casa</span>
+            <span class="precio">$30</span>
+            <span class="descripcion-item opciones-masa">(Pídelo en tortilla de harina o maíz)</span>
+        </div>
+        <div class="item">
+            <span class="nombre-item">Taco de Carne (Asada, Adobada, etc.)</span>
+            <span class="precio">$35</span>
+            <span class="descripcion-item opciones-masa">(Pregunta por las carnes del día / Harina o maíz)</span>
+        </div>
+    </div>
+    
     <div class="categoria">
         <div class="categoria-titulo">Especialidades de la Casa</div>
         <div class="item">

@@ -42,25 +42,25 @@
             background: white;
             padding: 30px 20px;
             border-radius: 12px;
-            margin-top: 40px; /* Aumentada la separación del header */
+            margin-top: 40px;
             box-shadow: 0 8px 20px var(--color-sombra);
-            border: 3px solid var(--color-secundario); /* Borde decorativo */
+            border: 3px solid var(--color-secundario);
         }
         
         .categoria {
-            margin-bottom: 40px; /* Aumentada la separación entre categorías */
+            margin-bottom: 40px;
         }
         
         .categoria-titulo {
             font-size: 28px;
             color: var(--color-secundario);
             margin-top: 0;
-            margin-bottom: 20px; /* Separación después del título */
+            margin-bottom: 20px;
             font-weight: bold;
             font-family: var(--font-titulo);
             letter-spacing: 1px;
             text-transform: uppercase;
-            border-bottom: 3px solid var(--color-secundario); /* Borde más grueso */
+            border-bottom: 3px solid var(--color-secundario);
             padding-bottom: 8px;
         }
         
@@ -69,8 +69,8 @@
             justify-content: space-between;
             align-items: center;
             text-align: left;
-            padding: 15px 0; /* Aumentada la separación vertical de los ítems */
-            border-bottom: 1px dashed #ccc; /* Separador de línea más visible */
+            padding: 15px 0;
+            border-bottom: 1px dashed #ccc;
         }
         
         .item:last-child {
@@ -78,7 +78,7 @@
         }
         
         .nombre-item {
-            font-size: 19px; /* Tamaño ligeramente más grande */
+            font-size: 19px;
             color: #333;
             font-weight: 700;
         }
@@ -91,7 +91,7 @@
         }
         
         .precio {
-            font-size: 22px; /* Tamaño de precio más grande */
+            font-size: 22px;
             font-weight: bold;
             color: var(--color-precio);
             min-width: 70px;
@@ -100,12 +100,12 @@
         
         .opciones-masa {
             font-style: italic;
-            color: #555; /* Color más oscuro para mejor lectura */
+            color: #555;
             font-weight: normal;
         }
         
         #qr-box {
-            margin-top: 50px; /* Aumentada la separación del menú */
+            margin-top: 50px;
             padding: 20px;
         }
 
@@ -122,6 +122,11 @@
             border-radius: 8px;
             box-shadow: 0 4px 10px var(--color-sombra);
         }
+        /* Resaltar la especialidad de la casa */
+        .resaltado {
+            color: var(--color-secundario);
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -132,50 +137,50 @@
 <div class="menu-container">
     
     <div class="categoria">
-        <div class="categoria-titulo">Tacos de Guisado o Normales</div>
+        <div class="categoria-titulo">Tacos de Carne Asada</div>
         <div class="item">
-            <span class="nombre-item">Taco de Guisado de la Casa</span>
-            <span class="precio">$30</span>
-            <span class="descripcion-item opciones-masa">(Pídelo en tortilla de harina o maíz)</span>
+            <span class="nombre-item">Taco de Carne Asada</span>
+            <span class="precio">$35</span>
+            <span class="descripcion-item opciones-masa">(Tortilla de harina o maíz)</span>
         </div>
         <div class="item">
-            <span class="nombre-item">Taco de Carne (Asada, Adobada, etc.)</span>
-            <span class="precio">$35</span>
-            <span class="descripcion-item opciones-masa">(Pregunta por las carnes del día / Harina o maíz)</span>
+            <span class="nombre-item">Taco de Asada con Queso</span>
+            <span class="precio">$45</span>
+            <span class="descripcion-item opciones-masa">(Tortilla de harina o maíz)</span>
         </div>
     </div>
     
     <div class="categoria">
-        <div class="categoria-titulo">Especialidades de la Casa</div>
+        <div class="categoria-titulo">Especialidades con Carne Asada</div>
         <div class="item">
-            <span class="nombre-item">Gorditas o Sope</span>
+            <span class="nombre-item">Gordita o Sope</span>
             <span class="precio">$50</span>
-            <span class="descripcion-item">(Asientos, queso y carne)</span>
+            <span class="descripcion-item">(Con <span class="resaltado">Carne Asada</span>, asientos y queso)</span>
         </div>
     </div>
 
     <div class="categoria">
-        <div class="categoria-titulo">Vampiros</div>
+        <div class="categoria-titulo">Vampiros de Carne Asada</div>
         <div class="item">
-            <span class="nombre-item">Vampiro Dorado con Queso</span>
+            <span class="nombre-item">Vampiro Dorado con Queso y Asada</span>
             <span class="precio">$45</span>
-            <span class="descripcion-item opciones-masa">(Tortilla de harina o maíz)</span>
+            <span class="descripcion-item opciones-masa">(Tortilla dorada, queso y <span class="resaltado">Carne Asada</span> / Harina o maíz)</span>
         </div>
     </div>
 
     <div class="categoria">
-        <div class="categoria-titulo">Caramelos</div>
+        <div class="categoria-titulo">Caramelos de Carne Asada</div>
         <div class="item">
-            <span class="nombre-item">Caramelo Blandito con Queso</span>
+            <span class="nombre-item">Caramelo Blandito con Queso y Asada</span>
             <span class="precio">$45</span>
-            <span class="descripcion-item opciones-masa">(Tortilla de harina o maíz)</span>
+            <span class="descripcion-item opciones-masa">(Tortilla blanda, queso y <span class="resaltado">Carne Asada</span> / Harina o maíz)</span>
         </div>
     </div>
 
     <div class="categoria">
-        <div class="categoria-titulo">Dorados</div>
+        <div class="categoria-titulo">Dorados de Carne Asada</div>
         <div class="item">
-            <span class="nombre-item">Dorado con Carne</span>
+            <span class="nombre-item">Dorado con Carne Asada</span>
             <span class="precio">$35</span>
             <span class="descripcion-item opciones-masa">(Tortilla de harina o maíz)</span>
         </div>

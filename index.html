@@ -12,6 +12,7 @@
             --color-principal: #d32f2f; /* Rojo intenso para encabezado */
             --color-secundario: #c62828; /* Rojo más oscuro para títulos */
             --color-precio: #2e7d32; /* Verde esmeralda para precios */
+            --color-oferta: #1565c0; /* Azul para resaltar la oferta */
             --color-sombra: rgba(0,0,0,0.3);
             --font-titulo: 'Bebas Neue', cursive;
             --font-cuerpo: 'Roboto', sans-serif;
@@ -67,7 +68,7 @@
         .item {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start; /* Alineación superior para el texto con varias líneas */
             text-align: left;
             padding: 15px 0;
             border-bottom: 1px dashed #ccc;
@@ -77,10 +78,23 @@
             border-bottom: none;
         }
         
+        .nombre-precio-group {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
         .nombre-item {
             font-size: 19px;
             color: #333;
             font-weight: 700;
+        }
+
+        .oferta {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--color-oferta);
+            margin-top: 4px;
         }
         
         .descripcion-item {
@@ -96,12 +110,19 @@
             color: var(--color-precio);
             min-width: 70px;
             text-align: right;
+            white-space: nowrap; /* Evita que el precio se rompa en dos líneas */
+            margin-left: 20px; /* Separación del texto */
         }
         
         .opciones-masa {
             font-style: italic;
             color: #555;
             font-weight: normal;
+        }
+        
+        .resaltado {
+            color: var(--color-secundario);
+            font-weight: bold;
         }
         
         #qr-box {
@@ -122,11 +143,6 @@
             border-radius: 8px;
             box-shadow: 0 4px 10px var(--color-sombra);
         }
-        /* Resaltar la especialidad */
-        .resaltado {
-            color: var(--color-secundario);
-            font-weight: bold;
-        }
     </style>
 </head>
 
@@ -137,63 +153,60 @@
 <div class="menu-container">
     
     <div class="categoria">
-        <div class="categoria-titulo">Nuestros Famosos Tacos</div>
+        <div class="categoria-titulo">Nuestros Famosos Tacos de Carne Asada</div>
         <div class="item">
-            <span class="nombre-item">Taco de Carne Asada</span>
+            <div class="nombre-precio-group">
+                <span class="nombre-item">Taco de Carne Asada</span>
+                <span class="descripcion-item opciones-masa">(Tortilla de harina o maíz)</span>
+                <span class="oferta">¡Oferta! 3 Tacos por $90</span>
+            </div>
             <span class="precio">$35</span>
-            <span class="descripcion-item opciones-masa">(Tortilla de harina o maíz)</span>
-        </div>
-        <div class="item">
-            <span class="nombre-item">Taco de Asada con Queso</span>
-            <span class="precio">$45</span>
-            <span class="descripcion-item opciones-masa">(Tortilla de harina o maíz)</span>
         </div>
     </div>
     
     <div class="categoria">
         <div class="categoria-titulo">Especialidades con Carne Asada</div>
         <div class="item">
-            <span class="nombre-item">Gordita o Sope</span>
+            <div class="nombre-precio-group">
+                <span class="nombre-item">Gordita o Sope</span>
+                <span class="descripcion-item">(Con <span class="resaltado">Carne Asada</span>, asientos y queso)</span>
+            </div>
             <span class="precio">$50</span>
-            <span class="descripcion-item">(Con <span class="resaltado">Carne Asada</span>, asientos y queso)</span>
         </div>
     </div>
 
     <div class="categoria">
-        <div class="categoria-titulo">Vampiros de Carne Asada</div>
+        <div class="categoria-titulo">Vampiros y Caramelos de Carne Asada</div>
+        
         <div class="item">
-            <span class="nombre-item">Vampiro Dorado con Queso y Asada</span>
+            <div class="nombre-precio-group">
+                <span class="nombre-item">Vampiro Dorado con Queso y Asada</span>
+                <span class="descripcion-item opciones-masa">(Tortilla dorada, queso y Asada / Harina o maíz)</span>
+            </div>
             <span class="precio">$45</span>
-            <span class="descripcion-item opciones-masa">(Tortilla dorada, queso y <span class="resaltado">Carne Asada</span> / Harina o maíz)</span>
         </div>
-    </div>
 
-    <div class="categoria">
-        <div class="categoria-titulo">Caramelos de Carne Asada</div>
         <div class="item">
-            <span class="nombre-item">Caramelo Blandito con Queso y Asada</span>
+            <div class="nombre-precio-group">
+                <span class="nombre-item">Caramelo Blandito con Queso y Asada</span>
+                <span class="descripcion-item opciones-masa">(Tortilla blanda, queso y Asada / Harina o maíz)</span>
+            </div>
             <span class="precio">$45</span>
-            <span class="descripcion-item opciones-masa">(Tortilla blanda, queso y <span class="resaltado">Carne Asada</span> / Harina o maíz)</span>
-        </div>
-    </div>
-
-    <div class="categoria">
-        <div class="categoria-titulo">Dorados de Carne Asada</div>
-        <div class="item">
-            <span class="nombre-item">Dorado con Carne Asada</span>
-            <span class="precio">$35</span>
-            <span class="descripcion-item opciones-masa">(Tortilla de harina o maíz)</span>
         </div>
     </div>
 
     <div class="categoria">
         <div class="categoria-titulo">Extras y Bebidas</div>
         <div class="item">
-            <span class="nombre-item">Plato de Frijol</span>
+            <div class="nombre-precio-group">
+                <span class="nombre-item">Plato de Frijol</span>
+            </div>
             <span class="precio">$10</span>
         </div>
         <div class="item">
-            <span class="nombre-item">Sodas y Refrescos</span>
+            <div class="nombre-precio-group">
+                <span class="nombre-item">Sodas y Aguas</span>
+            </div>
             <span class="precio">$20</span>
         </div>
     </div>

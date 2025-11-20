@@ -12,17 +12,17 @@
         /* ================================================================= */
         :root {
             /* Colores */
-            --color-fondo: #fce4ec; /* Fondo principal (Rosa pálido/Suave) */
-            --color-principal: #e91e63; /* Color principal de encabezado (Rojo Rosa intenso) */
-            --color-secundario: #c2185b; /* Color para títulos y bordes (Rojo Rosa más oscuro) */
-            --color-precio: #43a047; /* Color para precios (Verde más suave) */
-            --color-oferta: #03a9f4; /* Color para resaltar la oferta (Azul Cielo) */
+            --color-fondo: #fce4ec; 
+            --color-principal: #e91e63;
+            --color-secundario: #c2185b; 
+            --color-precio: #43a047; 
+            --color-oferta: #03a9f4; 
             --color-sombra: rgba(0,0,0,0.3);
-            --color-tarjeta: #ffffff; /* Color de fondo del menú (Blanco suave) */
+            --color-tarjeta: #ffffff; 
 
             /* Tipografía */
-            --font-titulo: 'Bebas Neue', cursive; /* Fuente para títulos grandes */
-            --font-cuerpo: 'Roboto', sans-serif; /* Fuente para el cuerpo del texto */
+            --font-titulo: 'Bebas Neue', cursive; 
+            --font-cuerpo: 'Roboto', sans-serif; 
         }
 
         /* Estilos generales del cuerpo */
@@ -47,7 +47,7 @@
             position: relative; /* Necesario para posicionar el botón */
         }
 
-        /* Estilos para el botón de cambio de idioma */
+        /* Estilos para el botón de cambio de idioma (Versión ESCRITORIO/GRANDE) */
         #btn-lang {
             position: absolute;
             right: 15px;
@@ -67,12 +67,31 @@
         #btn-lang:hover {
             background-color: #9c144e; /* Tono más oscuro al pasar el mouse */
         }
-        
-        /* Contenedor principal del menú */
+
+        /* ================================================================= */
+        /* MEDIA QUERY: AJUSTES PARA TELÉFONOS MÓVILES (menos de 600px)     */
+        /* ================================================================= */
+        @media (max-width: 600px) {
+            header {
+                /* Aumenta un poco el padding inferior para hacer espacio al botón */
+                padding: 20px 0 60px 0; 
+            }
+            #btn-lang {
+                /* Mueve el botón a la parte inferior derecha del header */
+                top: auto; 
+                bottom: 10px; /* 10px desde abajo */
+                right: 15px;
+                transform: none; /* Elimina la traslación vertical */
+                font-size: 13px; /* Reduce un poco el tamaño */
+                padding: 6px 10px;
+            }
+        }
+
+        /* Estilos del resto del menú (no se modificaron) */
         .menu-container {
-            max-width: 650px; /* Ancho máximo del menú */
+            max-width: 650px; 
             margin: auto;
-            background: var(--color-tarjeta); /* Fondo de la 'tarjeta' del menú */
+            background: var(--color-tarjeta); 
             padding: 30px 20px;
             border-radius: 12px;
             margin-top: 40px;
@@ -80,7 +99,6 @@
             border: 3px solid var(--color-secundario);
         }
         
-        /* Título principal del menú (Reemplaza los títulos de categoría) */
         .menu-titulo {
             font-size: 28px;
             color: var(--color-secundario);
@@ -94,7 +112,6 @@
             padding-bottom: 8px;
         }
         
-        /* Estilos para cada item/producto individual */
         .item {
             display: flex;
             justify-content: space-between;
@@ -104,26 +121,22 @@
             border-bottom: 1px dashed #ccc;
         }
         
-        /* Elimina la línea divisoria del último item */
         .item:last-child {
             border-bottom: none;
         }
         
-        /* Agrupa el nombre y la descripción del item */
         .nombre-precio-group {
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
         
-        /* Nombre del producto */
         .nombre-item {
             font-size: 19px;
             color: #333;
             font-weight: 700;
         }
 
-        /* Texto de la oferta */
         .oferta {
             font-size: 16px;
             font-weight: bold;
@@ -131,7 +144,6 @@
             margin-top: 4px;
         }
         
-        /* Descripción adicional del producto */
         .descripcion-item {
             font-size: 15px;
             color: #777;
@@ -139,7 +151,6 @@
             margin-top: 4px;
         }
         
-        /* Precio del producto */
         .precio {
             font-size: 22px;
             font-weight: bold;
@@ -150,20 +161,17 @@
             margin-left: 20px;
         }
         
-        /* Estilo para las opciones de masa/tortilla */
         .opciones-masa {
             font-style: italic;
             color: #555;
             font-weight: normal;
         }
         
-        /* Estilo para resaltar palabras clave en la descripción */
         .resaltado {
             color: var(--color-secundario);
             font-weight: bold;
         }
         
-        /* Aviso de pago */
         .aviso-pago {
             margin-top: 25px;
             padding-top: 15px;
@@ -174,13 +182,11 @@
             font-family: var(--font-titulo);
         }
 
-        /* Contenedor del QR */
-        #qr-box {
+        .container {
             margin-top: 50px;
             padding: 20px;
         }
 
-        /* Título de la sección QR */
         #qr-box h3 {
             color: #333;
             font-family: var(--font-titulo);
@@ -188,7 +194,6 @@
             margin-bottom: 15px;
         }
         
-        /* Imagen del QR */
         #qr-box img {
             width: 180px;
             border: 5px solid white;
@@ -216,6 +221,7 @@
         </div>
         <span class="precio">$35</span>
     </div>
+    
     <div class="item">
         <div class="nombre-precio-group">
             <span class="nombre-item" data-en="Gordita or Sope with Grilled Beef">Gordita o Sope de Carne Asada</span>
@@ -270,15 +276,12 @@
         const elementsToTranslate = document.querySelectorAll('[data-en]');
         let isEnglish = false; // El idioma por defecto es español (false)
 
-        // Función que realiza la traducción
         const toggleLanguage = () => {
-            isEnglish = !isEnglish; // Cambia el estado del idioma
+            isEnglish = !isEnglish; 
 
             elementsToTranslate.forEach(element => {
-                const spanishText = element.textContent; // Texto original en español
+                const spanishText = element.textContent; 
 
-                // NOTA IMPORTANTE: Para las descripciones que contienen el <span> resaltado,
-                // debemos usar innerHTML y manejar los nodos hijos.
                 if (element.classList.contains('descripcion-item')) {
                     const originalHTML = element.innerHTML;
                     const englishText = element.getAttribute('data-en');
@@ -286,33 +289,26 @@
                     if (isEnglish) {
                         element.textContent = englishText;
                     } else {
-                        // Vuelve a insertar el HTML original para preservar el <span>
                         element.innerHTML = originalHTML; 
                     }
-                    return; // Salta al siguiente elemento después de manejar la descripción
+                    return; 
                 }
 
-                // Para todos los demás elementos (títulos, nombres, avisos)
                 if (isEnglish) {
-                    // Guarda el texto original en el atributo 'data-es' antes de cambiar
                     element.setAttribute('data-es', spanishText); 
-                    // Cambia al texto en inglés
                     element.textContent = element.getAttribute('data-en');
                 } else {
-                    // Vuelve al texto en español (si existe, si no, usa el original)
                     element.textContent = element.getAttribute('data-es') || spanishText;
                 }
             });
 
-            // Cambia el texto del botón
             if (isEnglish) {
-                btnLang.textContent = btnLang.getAttribute('data-en'); // Muestra "Spanish"
+                btnLang.textContent = btnLang.getAttribute('data-en'); 
             } else {
-                btnLang.textContent = 'English'; // Muestra "English"
+                btnLang.textContent = 'English'; 
             }
         };
 
-        // Asigna el evento de clic al botón
         btnLang.addEventListener('click', toggleLanguage);
     });
 </script>

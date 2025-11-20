@@ -8,17 +8,21 @@
 
     <style>
         /* ================================================================= */
-        /* VARIABLES CSS: COLORES MÁS SUAVES Y AMIGABLES                            */
+        /* VARIABLES CSS: TEMA OSCURO (DARK MODE)                               */
         /* ================================================================= */
         :root {
-            /* Colores */
-            --color-fondo: #fce4ec; 
-            --color-principal: #e91e63;
-            --color-secundario: #c2185b; 
-            --color-precio: #43a047; 
-            --color-oferta: #03a9f4; 
-            --color-sombra: rgba(0,0,0,0.3);
-            --color-tarjeta: #ffffff; 
+            /* Colores Base Oscuros */
+            --color-fondo: #121212;         /* Fondo principal (Gris muy oscuro) */
+            --color-tarjeta: #1f1f1f;       /* Fondo del menú (Gris oscuro ligeramente más claro) */
+            --color-texto: #e0e0e0;         /* Texto principal (Blanco suave, no puro) */
+            --color-texto-suave: #a0a0a0;   /* Texto secundario/descripciones (Gris claro) */
+            --color-sombra: rgba(0,0,0,0.6); /* Sombra oscura */
+
+            /* Colores de Acento (Se mantienen, ajustados para contraste) */
+            --color-principal: #e91e63;     /* Rojo Rosa intenso */
+            --color-secundario: #ff80ab;    /* Rosa más claro para títulos */
+            --color-precio: #81c784;        /* Verde claro para precios */
+            --color-oferta: #81d4fa;        /* Azul claro para ofertas */
 
             /* Tipografía */
             --font-titulo: 'Bebas Neue', cursive; 
@@ -29,6 +33,7 @@
         body {
             font-family: var(--font-cuerpo);
             background-color: var(--color-fondo);
+            color: var(--color-texto); /* Texto principal ahora blanco suave */
             margin: 0;
             padding: 0;
             text-align: center;
@@ -47,15 +52,15 @@
             position: relative;
         }
 
-        /* Estilos para el botón de cambio de idioma (Versión ESCRITORIO/GRANDE) */
+        /* Estilos para el botón de cambio de idioma */
         #btn-lang {
             position: absolute;
             right: 15px;
             top: 50%;
             transform: translateY(-50%);
             background-color: var(--color-secundario);
-            color: white;
-            border: 2px solid white;
+            color: var(--color-fondo); /* Texto oscuro en botón claro */
+            border: 2px solid var(--color-fondo);
             padding: 8px 12px;
             border-radius: 8px;
             cursor: pointer;
@@ -65,7 +70,7 @@
         }
 
         #btn-lang:hover {
-            background-color: #9c144e; 
+            background-color: #f06292; /* Tono de rosa sutilmente diferente */
         }
 
         /* ================================================================= */
@@ -86,21 +91,19 @@
         .menu-container {
             max-width: 650px; 
             margin: auto;
-            background: var(--color-tarjeta); 
+            background: var(--color-tarjeta); /* Fondo gris oscuro */
             padding: 30px 20px;
             border-radius: 12px;
             margin-top: 40px;
             box-shadow: 0 8px 20px var(--color-sombra);
             border: 3px solid var(--color-secundario);
-
-            /* Aplica la animación */
             animation: menu-fade-in 1s ease-out;
         }
         
         /* Título principal del menú */
         .menu-titulo {
             font-size: 28px;
-            color: var(--color-secundario);
+            color: var(--color-secundario); /* Rosa claro */
             margin-top: 0;
             margin-bottom: 20px;
             font-weight: bold;
@@ -118,16 +121,15 @@
             align-items: flex-start;
             text-align: left;
             padding: 15px 0;
-            border-bottom: 1px dashed #ccc;
-            /* Agregamos una transición para el efecto hover (flotante) */
+            border-bottom: 1px dashed #333; /* Línea divisoria más oscura */
             transition: background-color 0.3s, transform 0.3s;
         }
         
         /* Animación de efecto "flotante" al pasar el mouse */
         .item:hover {
-            background-color: #ffebee; /* Rosa muy suave */
-            transform: scale(1.01); /* Se agranda ligeramente */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: #2e2e2e; /* Gris ligeramente más claro que la tarjeta */
+            transform: scale(1.01); 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
         }
 
         /* Elimina la línea divisoria del último item */
@@ -145,7 +147,7 @@
         /* Nombre del producto */
         .nombre-item {
             font-size: 19px;
-            color: #333;
+            color: var(--color-texto); /* Blanco suave */
             font-weight: 700;
         }
 
@@ -153,14 +155,14 @@
         .oferta {
             font-size: 16px;
             font-weight: bold;
-            color: var(--color-oferta);
+            color: var(--color-oferta); /* Azul claro */
             margin-top: 4px;
         }
         
         /* Descripción adicional del producto */
         .descripcion-item {
             font-size: 15px;
-            color: #777;
+            color: var(--color-texto-suave); /* Gris claro suave */
             display: block;
             margin-top: 4px;
         }
@@ -169,7 +171,7 @@
         .precio {
             font-size: 22px;
             font-weight: bold;
-            color: var(--color-precio);
+            color: var(--color-precio); /* Verde claro */
             min-width: 70px;
             text-align: right;
             white-space: nowrap;
@@ -179,13 +181,13 @@
         /* Estilo para las opciones de masa/tortilla */
         .opciones-masa {
             font-style: italic;
-            color: #555;
+            color: var(--color-texto-suave); /* Gris claro suave */
             font-weight: normal;
         }
         
         /* Estilo para resaltar palabras clave en la descripción */
         .resaltado {
-            color: var(--color-secundario);
+            color: var(--color-secundario); /* Rosa claro */
             font-weight: bold;
         }
         
@@ -193,7 +195,7 @@
         .aviso-pago {
             margin-top: 25px;
             padding-top: 15px;
-            border-top: 2px solid #eee;
+            border-top: 2px solid #333; /* Línea divisoria oscura */
             color: var(--color-secundario);
             font-size: 20px;
             font-weight: bold;
@@ -204,17 +206,17 @@
         #qr-box {
             margin-top: 50px;
             padding: 20px;
-            background-color: #fff; /* Fondo blanco para el QR */
+            background-color: var(--color-tarjeta); /* Fondo gris oscuro */
             max-width: 300px;
             margin-left: auto;
             margin-right: auto;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
 
         /* Título de la sección QR */
         #qr-box h3 {
-            color: #333;
+            color: var(--color-texto); /* Blanco suave */
             font-family: var(--font-titulo);
             font-size: 24px;
             margin-bottom: 15px;
@@ -225,20 +227,20 @@
         /* ================================================================= */
         @keyframes qr-pulse {
             0% {
-                box-shadow: 0 0 0 0 var(--color-principal);
+                box-shadow: 0 0 0 0 var(--color-secundario);
             }
             70% {
-                box-shadow: 0 0 0 10px rgba(233, 30, 99, 0);
+                box-shadow: 0 0 0 10px rgba(255, 128, 171, 0); /* Rosa con transparencia */
             }
             100% {
-                box-shadow: 0 0 0 0 rgba(233, 30, 99, 0);
+                box-shadow: 0 0 0 0 rgba(255, 128, 171, 0);
             }
         }
         
         /* Imagen del QR */
         #qr-box img {
             width: 180px;
-            border: 5px solid white;
+            border: 5px solid var(--color-fondo); /* Borde que contrasta con el fondo */
             border-radius: 8px;
             box-shadow: 0 4px 10px var(--color-sombra);
             
@@ -252,14 +254,14 @@
         @media (max-width: 600px) {
             header {
                 padding: 20px 0 60px 0; 
-                font-size: 30px; /* Tamaño del título reducido */
+                font-size: 30px; 
             }
             #btn-lang {
                 top: auto; 
                 bottom: 10px; 
                 right: 15px;
                 transform: none; 
-                font-size: 12px; /* Tamaño del texto del botón reducido */
+                font-size: 12px; 
                 padding: 5px 8px;
             }
             .menu-container {
@@ -353,7 +355,6 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const btnLang = document.getElementById('btn-lang');
-        // Seleccionamos todos los elementos con atributos de traducción
         const elementsToTranslate = document.querySelectorAll('[data-en]');
         let isEnglish = false; 
 
@@ -362,7 +363,7 @@
 
             elementsToTranslate.forEach(element => {
                 
-                // 1. Manejo especial para elementos que tienen HTML anidado (como el <span class="resaltado">)
+                // 1. Manejo especial para elementos que tienen HTML anidado
                 if (element.hasAttribute('data-es-html')) {
                     const englishText = element.getAttribute('data-en');
                     const spanishHTML = element.getAttribute('data-es-html');
@@ -375,7 +376,7 @@
                     return; 
                 }
 
-                // 2. Manejo general para elementos que solo contienen texto (la mayoría)
+                // 2. Manejo general para elementos que solo contienen texto
                 const spanishText = element.textContent; 
                 
                 if (isEnglish) {

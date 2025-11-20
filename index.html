@@ -7,9 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* ================================================================= */
-        /* VARIABLES CSS: COLORES MÁS SUAVES Y AMIGABLES                            */
-        /* ================================================================= */
+        /* [Se mantienen intactos todos los estilos CSS anteriores] */
         :root {
             /* Colores */
             --color-fondo: #fce4ec; 
@@ -44,7 +42,7 @@
             font-family: var(--font-titulo);
             letter-spacing: 2px;
             box-shadow: 0 4px 6px var(--color-sombra);
-            position: relative; /* Necesario para posicionar el botón */
+            position: relative; 
         }
 
         /* Estilos para el botón de cambio de idioma (Versión ESCRITORIO/GRANDE) */
@@ -65,7 +63,7 @@
         }
 
         #btn-lang:hover {
-            background-color: #9c144e; /* Tono más oscuro al pasar el mouse */
+            background-color: #9c144e; 
         }
 
         /* ================================================================= */
@@ -73,11 +71,9 @@
         /* ================================================================= */
         @media (max-width: 600px) {
             header {
-                /* Aumenta un poco el padding inferior para hacer espacio al botón */
                 padding: 20px 0 60px 0; 
             }
             #btn-lang {
-                /* Se mueve el botón a la parte inferior derecha del header */
                 top: auto; 
                 bottom: 10px; 
                 right: 15px;
@@ -225,7 +221,11 @@
     <div class="item">
         <div class="nombre-precio-group">
             <span class="nombre-item" data-en="Gordita or Sope with Grilled Beef">Gordita o Sope de Carne Asada</span>
-            <span class="descripcion-item" data-en="(With Grilled Beef, refried beans, and cheese)">(Con <span class="resaltado">Carne Asada</span>, asientos y queso)</span>
+            <span class="descripcion-item descripcion-con-resaltado" 
+                  data-en="(With Grilled Beef, refried beans, and cheese)" 
+                  data-es-html='(Con <span class="resaltado">Carne Asada</span>, asientos y queso)'>
+                (Con <span class="resaltado">Carne Asada</span>, asientos y queso)
+            </span>
         </div>
         <span class="precio">$50</span>
     </div>
@@ -280,26 +280,31 @@
             isEnglish = !isEnglish; // Alterna entre true/false
 
             elementsToTranslate.forEach(element => {
-                const spanishText = element.textContent; 
-
-                // Lógica especial para mantener el <span> resaltado
-                if (element.classList.contains('descripcion-item')) {
-                    const originalHTML = element.innerHTML;
+                
+                // 1. Manejo especial para elementos que tienen HTML anidado (como el <span class="resaltado">)
+                if (element.hasAttribute('data-es-html')) {
                     const englishText = element.getAttribute('data-en');
+                    const spanishHTML = element.getAttribute('data-es-html');
                     
                     if (isEnglish) {
-                        element.textContent = englishText;
+                        // Al inglés: usar solo el texto, sobrescribiendo el HTML
+                        element.textContent = englishText; 
                     } else {
-                        element.innerHTML = originalHTML; 
+                        // Al español: restaurar el HTML original
+                        element.innerHTML = spanishHTML; 
                     }
                     return; 
                 }
 
-                // Lógica general de traducción
+                // 2. Manejo general para elementos que solo contienen texto (la mayoría)
+                const spanishText = element.textContent; 
+                
                 if (isEnglish) {
+                    // Guarda el texto original en 'data-es' y cambia a inglés
                     element.setAttribute('data-es', spanishText); 
                     element.textContent = element.getAttribute('data-en');
                 } else {
+                    // Vuelve a español
                     element.textContent = element.getAttribute('data-es') || spanishText;
                 }
             });

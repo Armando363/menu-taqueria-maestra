@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menú Taquería Maestra</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8e1;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #d32f2f;
+            color: white;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .menu {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        .item {
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .item:last-child {
+            border: none;
+        }
+        .titulo {
+            font-size: 22px;
+            color: #c62828;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .precio {
+            float: right;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        #qr-box {
+            margin-top: 30px;
+        }
+        #qr-box img {
+            width: 160px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>🌮 Menú Taquería Maestra</header>
+
+<div class="menu">
+    <div class="item"><span>Gorditas o Zope (asientos, queso y carne)</span> <span class="precio">$50</span></div>
+
+    <div class="titulo">Vampiros</div>
+    <div class="item"><span>Vampiro dorado con queso (harina o maíz)</span> <span class="precio">$45</span></div>
+
+    <div class="titulo">Caramelos</div>
+    <div class="item"><span>Caramelo blandito con queso (harina o maíz)</span> <span class="precio">$45</span></div>
+
+    <div class="titulo">Dorados</div>
+    <div class="item"><span>Dorado con carne (harina o maíz)</span> <span class="precio">$35</span></div>
+
+    <div class="titulo">Otros</div>
+    <div class="item"><span>Plato de frijol</span> <span class="precio">$10</span></div>
+    <div class="item"><span>Sodas y refrescos</span> <span class="precio">$20</span></div>
+</div>
+
+<div id="qr-box">
+    <h3>Escanea para ver el menú</h3>
+
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://armando363.github.io/menu-taqueria-maestra" alt="QR del menú">
+</div>
+
+</body>
+</html>

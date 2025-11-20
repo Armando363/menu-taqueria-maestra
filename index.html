@@ -7,17 +7,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
+        /* ================================================================= */
+        /* VARIABLES CSS                            */
+        /* ================================================================= */
         :root {
-            --color-fondo: #fff8e1; /* Amarillo pálido de base */
-            --color-principal: #d32f2f; /* Rojo intenso para encabezado */
-            --color-secundario: #c62828; /* Rojo más oscuro para títulos */
-            --color-precio: #2e7d32; /* Verde esmeralda para precios */
-            --color-oferta: #1565c0; /* Azul para resaltar la oferta */
+            /* Colores */
+            --color-fondo: #fff8e1; /* Fondo principal (Amarillo pálido) */
+            --color-principal: #d32f2f; /* Color principal de encabezado (Rojo intenso) */
+            --color-secundario: #c62828; /* Color para títulos y bordes (Rojo más oscuro) */
+            --color-precio: #2e7d32; /* Color para precios (Verde esmeralda) */
+            --color-oferta: #1565c0; /* Color para resaltar la oferta (Azul) */
             --color-sombra: rgba(0,0,0,0.3);
-            --font-titulo: 'Bebas Neue', cursive;
-            --font-cuerpo: 'Roboto', sans-serif;
+
+            /* Tipografía */
+            --font-titulo: 'Bebas Neue', cursive; /* Fuente para títulos grandes */
+            --font-cuerpo: 'Roboto', sans-serif; /* Fuente para el cuerpo del texto */
         }
 
+        /* Estilos generales del cuerpo */
         body {
             font-family: var(--font-cuerpo);
             background-color: var(--color-fondo);
@@ -26,6 +33,7 @@
             text-align: center;
         }
         
+        /* Estilos del encabezado principal */
         header {
             background-color: var(--color-principal);
             color: white;
@@ -37,8 +45,9 @@
             box-shadow: 0 4px 6px var(--color-sombra);
         }
         
+        /* Contenedor principal del menú */
         .menu-container {
-            max-width: 650px;
+            max-width: 650px; /* Ancho máximo del menú */
             margin: auto;
             background: white;
             padding: 30px 20px;
@@ -48,11 +57,7 @@
             border: 3px solid var(--color-secundario);
         }
         
-        .categoria {
-            margin-bottom: 40px;
-            /* Se mantiene para agrupar visualmente si se desea, aunque no se use el título */
-        }
-        
+        /* Título principal del menú (Reemplaza los títulos de categoría) */
         .menu-titulo {
             font-size: 28px;
             color: var(--color-secundario);
@@ -66,31 +71,36 @@
             padding-bottom: 8px;
         }
         
+        /* Estilos para cada item/producto individual */
         .item {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start; /* Alineación superior para el texto con varias líneas */
+            align-items: flex-start;
             text-align: left;
             padding: 15px 0;
             border-bottom: 1px dashed #ccc;
         }
         
+        /* Elimina la línea divisoria del último item */
         .item:last-child {
             border-bottom: none;
         }
         
+        /* Agrupa el nombre y la descripción del item */
         .nombre-precio-group {
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
         
+        /* Nombre del producto */
         .nombre-item {
             font-size: 19px;
             color: #333;
             font-weight: 700;
         }
 
+        /* Texto de la oferta */
         .oferta {
             font-size: 16px;
             font-weight: bold;
@@ -98,6 +108,7 @@
             margin-top: 4px;
         }
         
+        /* Descripción adicional del producto */
         .descripcion-item {
             font-size: 15px;
             color: #777;
@@ -105,32 +116,37 @@
             margin-top: 4px;
         }
         
+        /* Precio del producto */
         .precio {
             font-size: 22px;
             font-weight: bold;
             color: var(--color-precio);
             min-width: 70px;
             text-align: right;
-            white-space: nowrap; /* Evita que el precio se rompa en dos líneas */
-            margin-left: 20px; /* Separación del texto */
+            white-space: nowrap;
+            margin-left: 20px;
         }
         
+        /* Estilo para las opciones de masa/tortilla */
         .opciones-masa {
             font-style: italic;
             color: #555;
             font-weight: normal;
         }
         
+        /* Estilo para resaltar palabras clave en la descripción */
         .resaltado {
             color: var(--color-secundario);
             font-weight: bold;
         }
         
+        /* Contenedor del QR */
         #qr-box {
             margin-top: 50px;
             padding: 20px;
         }
 
+        /* Título de la sección QR */
         #qr-box h3 {
             color: #333;
             font-family: var(--font-titulo);
@@ -138,6 +154,7 @@
             margin-bottom: 15px;
         }
         
+        /* Imagen del QR */
         #qr-box img {
             width: 180px;
             border: 5px solid white;
@@ -149,7 +166,7 @@
 
 <body>
 
-<header>🌮 Taquería La Mestra 🌶️</header>
+<header>Taquería La Mestra</header>
 
 <div class="menu-container">
     
@@ -163,7 +180,6 @@
         </div>
         <span class="precio">$35</span>
     </div>
-    
     <div class="item">
         <div class="nombre-precio-group">
             <span class="nombre-item">Gordita o Sope de Asada</span>
@@ -203,7 +219,7 @@
 </div>
 
 <div id="qr-box">
-    <h3>¡Pide tu Menú Digital!</h3>
+    <h3>¡Comparte el Sabor! Escanea y Comparte el Menú</h3>
 
     <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://armando363.github.io/menu-taqueria-maestra" alt="QR del menú">
 </div>

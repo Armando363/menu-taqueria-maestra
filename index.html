@@ -8,16 +8,17 @@
 
     <style>
         /* ================================================================= */
-        /* VARIABLES CSS                            */
+        /* VARIABLES CSS: COLORES MÁS SUAVES Y AMIGABLES                            */
         /* ================================================================= */
         :root {
             /* Colores */
-            --color-fondo: #fff8e1; /* Fondo principal (Amarillo pálido) */
-            --color-principal: #d32f2f; /* Color principal de encabezado (Rojo intenso) */
-            --color-secundario: #c62828; /* Color para títulos y bordes (Rojo más oscuro) */
-            --color-precio: #2e7d32; /* Color para precios (Verde esmeralda) */
-            --color-oferta: #1565c0; /* Color para resaltar la oferta (Azul) */
+            --color-fondo: #fce4ec; /* Fondo principal (Rosa pálido/Suave) */
+            --color-principal: #e91e63; /* Color principal de encabezado (Rojo Rosa intenso) */
+            --color-secundario: #c2185b; /* Color para títulos y bordes (Rojo Rosa más oscuro) */
+            --color-precio: #43a047; /* Color para precios (Verde más suave) */
+            --color-oferta: #03a9f4; /* Color para resaltar la oferta (Azul Cielo) */
             --color-sombra: rgba(0,0,0,0.3);
+            --color-tarjeta: #ffffff; /* Color de fondo del menú (Blanco suave) */
 
             /* Tipografía */
             --font-titulo: 'Bebas Neue', cursive; /* Fuente para títulos grandes */
@@ -49,7 +50,7 @@
         .menu-container {
             max-width: 650px; /* Ancho máximo del menú */
             margin: auto;
-            background: white;
+            background: var(--color-tarjeta); /* Fondo de la 'tarjeta' del menú */
             padding: 30px 20px;
             border-radius: 12px;
             margin-top: 40px;
@@ -140,6 +141,17 @@
             font-weight: bold;
         }
         
+        /* Aviso de pago */
+        .aviso-pago {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 2px solid #eee;
+            color: var(--color-secundario);
+            font-size: 20px;
+            font-weight: bold;
+            font-family: var(--font-titulo);
+        }
+
         /* Contenedor del QR */
         #qr-box {
             margin-top: 50px;
@@ -170,7 +182,7 @@
 
 <div class="menu-container">
     
-    <div class="menu-titulo">Menú Completo de Tacos y Especialidades</div>
+    <div class="menu-titulo">Menú Completo ($MXN)</div>
 
     <div class="item">
         <div class="nombre-precio-group">
@@ -215,6 +227,10 @@
             <span class="nombre-item">Sodas y Aguas</span>
         </div>
         <span class="precio">$20</span>
+    </div>
+
+    <div class="aviso-pago">
+        Pago: SOLO EFECTIVO
     </div>
 </div>
 

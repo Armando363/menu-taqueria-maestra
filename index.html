@@ -4,82 +4,191 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menú Taquería Maestra</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --color-fondo: #fff8e1; /* Amarillo pálido de base */
+            --color-principal: #d32f2f; /* Rojo intenso para encabezado */
+            --color-secundario: #c62828; /* Rojo más oscuro para títulos */
+            --color-precio: #2e7d32; /* Verde esmeralda para precios */
+            --color-sombra: rgba(0,0,0,0.3);
+            --font-titulo: 'Bebas Neue', cursive;
+            --font-cuerpo: 'Roboto', sans-serif;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #fff8e1;
+            font-family: var(--font-cuerpo);
+            background-color: var(--color-fondo);
             margin: 0;
             padding: 0;
             text-align: center;
         }
+        
         header {
-            background-color: #d32f2f;
+            background-color: var(--color-principal);
             color: white;
-            padding: 20px;
-            font-size: 28px;
+            padding: 25px 0;
+            font-size: 36px;
             font-weight: bold;
+            font-family: var(--font-titulo);
+            letter-spacing: 2px;
+            box-shadow: 0 4px 6px var(--color-sombra);
         }
-        .menu {
-            max-width: 600px;
+        
+        .menu-container {
+            max-width: 650px;
             margin: auto;
             background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        }
-        .item {
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-            padding: 10px 0;
-        }
-        .item:last-child {
-            border: none;
-        }
-        .titulo {
-            font-size: 22px;
-            color: #c62828;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        .precio {
-            float: right;
-            font-weight: bold;
-            color: #2e7d32;
-        }
-        #qr-box {
+            padding: 30px 20px;
+            border-radius: 12px;
             margin-top: 30px;
+            box-shadow: 0 8px 20px var(--color-sombra);
+            border: 3px solid var(--color-secundario); /* Borde decorativo */
         }
+        
+        .categoria {
+            margin-bottom: 25px;
+        }
+        
+        .categoria-titulo {
+            font-size: 28px;
+            color: var(--color-secundario);
+            margin-top: 20px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-family: var(--font-titulo);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--color-secundario);
+            padding-bottom: 5px;
+        }
+        
+        .item {
+            display: flex; /* Usar flexbox para alinear nombre y precio */
+            justify-content: space-between; /* Espaciar el contenido */
+            align-items: center;
+            text-align: left;
+            padding: 12px 0;
+            border-bottom: 1px dotted #ccc; /* Separador más sutil */
+        }
+        
+        .item:last-child {
+            border-bottom: none;
+        }
+        
+        .nombre-item {
+            font-size: 18px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .descripcion-item {
+            font-size: 14px;
+            color: #777;
+            display: block;
+            margin-top: 2px;
+        }
+        
+        .precio {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--color-precio);
+            min-width: 60px; /* Asegura un ancho mínimo para alineación */
+            text-align: right;
+        }
+        
+        #qr-box {
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        #qr-box h3 {
+            color: #333;
+            font-family: var(--font-titulo);
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
         #qr-box img {
-            width: 160px;
+            width: 180px;
+            border: 5px solid white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px var(--color-sombra);
+        }
+
+        /* Estilos para el texto de la descripción de los tacos */
+        .opciones-masa {
+            font-style: italic;
+            color: #777;
+            font-weight: normal;
+        }
+
+        /* Utilidad para limpiar floats si fuera necesario (aunque con flexbox no es necesario) */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
         }
     </style>
 </head>
 
 <body>
 
-<header>🌮 Menú Taquería Maestra</header>
+<header>🌮 Taquería Maestra 🌶️</header>
 
-<div class="menu">
-    <div class="item"><span>Gorditas o Zope (asientos, queso y carne)</span> <span class="precio">$50</span></div>
+<div class="menu-container">
+    <div class="categoria">
+        <div class="categoria-titulo">Especialidades de la Casa</div>
+        <div class="item">
+            <span class="nombre-item">Gorditas o Sope</span>
+            <span class="precio">$50</span>
+            <span class="descripcion-item">(Asientos, queso y carne)</span>
+        </div>
+    </div>
 
-    <div class="titulo">Vampiros</div>
-    <div class="item"><span>Vampiro dorado con queso (harina o maíz)</span> <span class="precio">$45</span></div>
+    <div class="categoria">
+        <div class="categoria-titulo">Vampiros</div>
+        <div class="item">
+            <span class="nombre-item">Vampiro Dorado con Queso</span>
+            <span class="precio">$45</span>
+            <span class="descripcion-item opciones-masa">(Tortilla de harina o maíz)</span>
+        </div>
+    </div>
 
-    <div class="titulo">Caramelos</div>
-    <div class="item"><span>Caramelo blandito con queso (harina o maíz)</span> <span class="precio">$45</span></div>
+    <div class="categoria">
+        <div class="categoria-titulo">Caramelos</div>
+        <div class="item">
+            <span class="nombre-item">Caramelo Blandito con Queso</span>
+            <span class="precio">$45</span>
+            <span class="descripcion-item opciones-masa">(Tortilla de harina o maíz)</span>
+        </div>
+    </div>
 
-    <div class="titulo">Dorados</div>
-    <div class="item"><span>Dorado con carne (harina o maíz)</span> <span class="precio">$35</span></div>
+    <div class="categoria">
+        <div class="categoria-titulo">Dorados</div>
+        <div class="item">
+            <span class="nombre-item">Dorado con Carne</span>
+            <span class="precio">$35</span>
+            <span class="descripcion-item opciones-masa">(Tortilla de harina o maíz)</span>
+        </div>
+    </div>
 
-    <div class="titulo">Otros</div>
-    <div class="item"><span>Plato de frijol</span> <span class="precio">$10</span></div>
-    <div class="item"><span>Sodas y refrescos</span> <span class="precio">$20</span></div>
+    <div class="categoria">
+        <div class="categoria-titulo">Extras y Bebidas</div>
+        <div class="item">
+            <span class="nombre-item">Plato de Frijol</span>
+            <span class="precio">$10</span>
+        </div>
+        <div class="item">
+            <span class="nombre-item">Sodas y Refrescos</span>
+            <span class="precio">$20</span>
+        </div>
+    </div>
 </div>
 
 <div id="qr-box">
-    <h3>Escanea para ver el menú</h3>
+    <h3>¡Pide tu Menú Digital!</h3>
 
     <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://armando363.github.io/menu-taqueria-maestra" alt="QR del menú">
 </div>

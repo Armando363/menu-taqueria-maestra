@@ -77,12 +77,12 @@
                 padding: 20px 0 60px 0; 
             }
             #btn-lang {
-                /* Mueve el botón a la parte inferior derecha del header */
+                /* Se mueve el botón a la parte inferior derecha del header */
                 top: auto; 
-                bottom: 10px; /* 10px desde abajo */
+                bottom: 10px; 
                 right: 15px;
-                transform: none; /* Elimina la traslación vertical */
-                font-size: 13px; /* Reduce un poco el tamaño */
+                transform: none; 
+                font-size: 13px; 
                 padding: 6px 10px;
             }
         }
@@ -182,7 +182,7 @@
             font-family: var(--font-titulo);
         }
 
-        .container {
+        #qr-box {
             margin-top: 50px;
             padding: 20px;
         }
@@ -277,11 +277,12 @@
         let isEnglish = false; // El idioma por defecto es español (false)
 
         const toggleLanguage = () => {
-            isEnglish = !isEnglish; 
+            isEnglish = !isEnglish; // Alterna entre true/false
 
             elementsToTranslate.forEach(element => {
                 const spanishText = element.textContent; 
 
+                // Lógica especial para mantener el <span> resaltado
                 if (element.classList.contains('descripcion-item')) {
                     const originalHTML = element.innerHTML;
                     const englishText = element.getAttribute('data-en');
@@ -294,6 +295,7 @@
                     return; 
                 }
 
+                // Lógica general de traducción
                 if (isEnglish) {
                     element.setAttribute('data-es', spanishText); 
                     element.textContent = element.getAttribute('data-en');
@@ -302,10 +304,11 @@
                 }
             });
 
+            // Actualiza el texto del botón
             if (isEnglish) {
-                btnLang.textContent = btnLang.getAttribute('data-en'); 
+                btnLang.textContent = btnLang.getAttribute('data-en'); // Muestra "Spanish"
             } else {
-                btnLang.textContent = 'English'; 
+                btnLang.textContent = 'English'; // Muestra "English"
             }
         };
 

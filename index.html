@@ -33,7 +33,7 @@
             padding: 0;
             text-align: center;
         }
-        
+
         /* Estilos del encabezado principal */
         header {
             background-color: var(--color-principal);
@@ -44,6 +44,28 @@
             font-family: var(--font-titulo);
             letter-spacing: 2px;
             box-shadow: 0 4px 6px var(--color-sombra);
+            position: relative; /* Necesario para posicionar el botón */
+        }
+
+        /* Estilos para el botón de cambio de idioma */
+        #btn-lang {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--color-secundario);
+            color: white;
+            border: 2px solid white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        #btn-lang:hover {
+            background-color: #9c144e; /* Tono más oscuro al pasar el mouse */
         }
         
         /* Contenedor principal del menú */
@@ -178,67 +200,122 @@
 
 <body>
 
-<header>Taquería La Maestra</header>
+<header>Taquería La Maestra
+    <button id="btn-lang" data-en="Spanish">English</button>
+</header>
 
 <div class="menu-container">
     
-    <div class="menu-titulo">Menú Completo ($MXN)</div>
+    <div class="menu-titulo" data-en="Full Menu ($MXN)">Menú Completo ($MXN)</div>
 
     <div class="item">
         <div class="nombre-precio-group">
-            <span class="nombre-item">Taco de Carne Asada</span>
-            <span class="descripcion-item opciones-masa">(Tortilla de harina o maíz)</span>
-            <span class="oferta">¡Oferta! 3 Tacos por $90</span>
+            <span class="nombre-item" data-en="Grilled Beef Taco">Taco de Carne Asada</span>
+            <span class="descripcion-item opciones-masa" data-en="(Flour or corn tortilla)">(Tortilla de harina o maíz)</span>
+            <span class="oferta" data-en="Offer! 3 Tacos for $90">¡Oferta! 3 Tacos por $90</span>
         </div>
         <span class="precio">$35</span>
     </div>
     <div class="item">
         <div class="nombre-precio-group">
-            <span class="nombre-item">Gordita o Sope de Asada</span>
-            <span class="descripcion-item">(Con <span class="resaltado">Carne Asada</span>, asientos y queso)</span>
+            <span class="nombre-item" data-en="Gordita or Sope with Asada">Gordita o Sope de Asada</span>
+            <span class="descripcion-item" data-en="(With Grilled Beef, refried beans, and cheese)">(Con <span class="resaltado">Carne Asada</span>, asientos y queso)</span>
         </div>
         <span class="precio">$50</span>
     </div>
 
     <div class="item">
         <div class="nombre-precio-group">
-            <span class="nombre-item">Vampiro Dorado con Queso y Asada</span>
-            <span class="descripcion-item opciones-masa">(Tortilla dorada, queso y Asada / Harina o maíz)</span>
+            <span class="nombre-item" data-en="Golden Vampire (Vampiro) with Cheese and Asada">Vampiro Dorado con Queso y Asada</span>
+            <span class="descripcion-item opciones-masa" data-en="(Crispy tortilla, cheese and Asada / Flour or corn)">(Tortilla dorada, queso y Asada / Harina o maíz)</span>
         </div>
         <span class="precio">$45</span>
     </div>
 
     <div class="item">
         <div class="nombre-precio-group">
-            <span class="nombre-item">Caramelo Blandito con Queso y Asada</span>
-            <span class="descripcion-item opciones-masa">(Tortilla blanda, queso y Asada / Harina o maíz)</span>
+            <span class="nombre-item" data-en="Soft Caramel (Caramelo) with Cheese and Asada">Caramelo Blandito con Queso y Asada</span>
+            <span class="descripcion-item opciones-masa" data-en="(Soft tortilla, cheese and Asada / Flour or corn)">(Tortilla blanda, queso y Asada / Harina o maíz)</span>
         </div>
         <span class="precio">$45</span>
     </div>
 
     <div class="item">
         <div class="nombre-precio-group">
-            <span class="nombre-item">Plato de Frijol</span>
+            <span class="nombre-item" data-en="Plate of Refried Beans">Plato de Frijol</span>
         </div>
         <span class="precio">$10</span>
     </div>
     <div class="item">
         <div class="nombre-precio-group">
-            <span class="nombre-item">Sodas y Aguas</span>
+            <span class="nombre-item" data-en="Sodas and Water">Sodas y Aguas</span>
         </div>
         <span class="precio">$20</span>
     </div>
 
-    <div class="aviso-pago">
+    <div class="aviso-pago" data-en="Payment: CASH ONLY">
         Pago: SOLO EFECTIVO
     </div>
 </div>
 
 <div id="qr-box">
-    <h3>¡Comparte el Sabor! Escanea y Comparte el Menú</h3>
+    <h3 data-en="Share the Flavor! Scan and Share the Menu">¡Comparte el Sabor! Escanea y Comparte el Menú</h3>
 
     <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://armando363.github.io/menu-taqueria-maestra" alt="QR del menú">
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const btnLang = document.getElementById('btn-lang');
+        const elementsToTranslate = document.querySelectorAll('[data-en]');
+        let isEnglish = false; // El idioma por defecto es español (false)
+
+        // Función que realiza la traducción
+        const toggleLanguage = () => {
+            isEnglish = !isEnglish; // Cambia el estado del idioma
+
+            elementsToTranslate.forEach(element => {
+                const spanishText = element.textContent; // Texto original en español
+
+                // NOTA IMPORTANTE: Para las descripciones que contienen el <span> resaltado,
+                // debemos usar innerHTML y manejar los nodos hijos.
+                if (element.classList.contains('descripcion-item')) {
+                    const originalHTML = element.innerHTML;
+                    const englishText = element.getAttribute('data-en');
+                    
+                    if (isEnglish) {
+                        element.textContent = englishText;
+                    } else {
+                        // Vuelve a insertar el HTML original para preservar el <span>
+                        element.innerHTML = originalHTML; 
+                    }
+                    return; // Salta al siguiente elemento después de manejar la descripción
+                }
+
+                // Para todos los demás elementos (títulos, nombres, avisos)
+                if (isEnglish) {
+                    // Guarda el texto original en el atributo 'data-es' antes de cambiar
+                    element.setAttribute('data-es', spanishText); 
+                    // Cambia al texto en inglés
+                    element.textContent = element.getAttribute('data-en');
+                } else {
+                    // Vuelve al texto en español (si existe, si no, usa el original)
+                    element.textContent = element.getAttribute('data-es') || spanishText;
+                }
+            });
+
+            // Cambia el texto del botón
+            if (isEnglish) {
+                btnLang.textContent = btnLang.getAttribute('data-en'); // Muestra "Spanish"
+            } else {
+                btnLang.textContent = 'English'; // Muestra "English"
+            }
+        };
+
+        // Asigna el evento de clic al botón
+        btnLang.addEventListener('click', toggleLanguage);
+    });
+</script>
 
 </body>
 </html>
